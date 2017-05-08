@@ -10,8 +10,8 @@ Github：https://github.com/apache/geode    
 
 下载java rpm或tar.gz
 
-    $ wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm"   
-
+    $ wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm" 
+    或
     $ wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz"    
 
 ## 安装
@@ -58,15 +58,53 @@ Github：https://github.com/apache/geode    
     
 #### 3. 开启 gfsh
 
-    $ gfsh
-    
-#### 4. 启动一个 GemFire Locator
+    $ gfsh    
+```
+        _________________________     __
+   / _____/ ______/ ______/ /____/ /
+  / /  __/ /___  /_____  / _____  / 
+ / /__/ / ____/  _____/ / /    / /  
+/______/_/      /______/_/    /_/    1.1.1
 
-    gfsh> start locator --name=locator1
+Monitor and Manage Apache Geode
+```
     
+#### 4. 启动一个 GemFire Locator   
+
+    gfsh> start locator --name=locator1    
+```
+Starting a Geode Locator in /home/geode/locator1...
+........
+Locator in /home/geode/locator1 on db1[10334] as locator1 is currently online.
+Process ID: 26983
+Uptime: 5 seconds
+Geode Version: 1.1.1
+Java Version: 1.8.0_131
+Log File: /home/geode/locator1/locator1.log
+JVM Arguments: -Dgemfire.enable-cluster-configuration=true -Dgemfire.load-cluster-configuration-from-dir=false -Dgemfire.launcher.registerSignalHandlers=true -Djava.awt.headless=true -Dsun.rmi.dgc.server.gcInterval=9223372036854775806
+Class-Path: /usr/local/geode/lib/geode-core-1.1.1.jar:/usr/local/geode/lib/geode-dependencies.jar
+
+Successfully connected to: JMX Manager [host=db1, port=1099]
+
+Cluster configuration service is up and running.
+```
+
+    
 #### 5. 启动一个缓存服务器
 
-    gfsh> start server --name=server1 --server-port=40411
+    gfsh> start server --name=server1 --server-port=40411   
+```
+Starting a Geode Server in /home/geode/server1...
+.........
+Server in /home/geode/server1 on db1[40411] as server1 is currently online.
+Process ID: 27106
+Uptime: 5 seconds
+Geode Version: 1.1.1
+Java Version: 1.8.0_131
+Log File: /home/geode/server1/server1.log
+JVM Arguments: -Dgemfire.default.locators=192.168.0.116[10334] -Dgemfire.use-cluster-configuration=true -Dgemfire.start-dev-rest-api=false -XX:OnOutOfMemoryError=kill -KILL %p -Dgemfire.launcher.registerSignalHandlers=true -Djava.awt.headless=true -Dsun.rmi.dgc.server.gcInterval=9223372036854775806
+Class-Path: /usr/local/geode/lib/geode-core-1.1.1.jar:/usr/local/geode/lib/geode-dependencies.jar
+```
 
 #### 6. 创建一个region
 
